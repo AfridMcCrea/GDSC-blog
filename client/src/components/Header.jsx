@@ -49,14 +49,14 @@ export default function Header() {
           className="hidden lg:inline"
         />
       </form>
-      <div className="flex gap-2 md:order-2">
+      <div className="flex gap-1 md:order-2">
         <Button
           className="w-12 h-10 sm:inline"
           color="transparent"
           pill
           onClick={() => dispatch(toogleTheme())}
         >
-          <div className="">{theme == "light" ? <FaSun /> : <FaMoon />}</div>
+        { currentUser && (<div className="">{theme == "light" ? <FaSun /> : <FaMoon />}</div>)}  
         </Button>
         {currentUser ? (
           <Dropdown
@@ -80,7 +80,7 @@ export default function Header() {
           </Dropdown>
         ) : (
           <Link to="/sign-in">
-            <Button gradientDuoTone="purpleToBlue" outline>
+            <Button gradientDuoTone="purpleToBlue" outline >
               Sign In
             </Button>
           </Link>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import PostCard from "../components/PostCard";
 import banner from "../assets/banner.png";
-import { Button } from "flowbite-react";
+
 
 export default function Home() {
   const [posts, setPosts] = useState("");
