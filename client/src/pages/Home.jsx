@@ -33,12 +33,17 @@ export default function Home() {
               nisi dicta quisquam distinctio.
             </p>
             <div className="flex gap-3 h-10">
+              <Link to='https://gdsc.community.dev/tezpur-university-tezpur-india/'>
               <Button class="bg-[#4285F4] hover:bg-blue-700 text-white  rounded">
                 Learn More
               </Button>
+              </Link>
+              <Link to='https://www.instagram.com/gdsc_tezu/'>
               <Button className="bg-white hover:bg-blue-700 text-[#4285F4] outline rounded-sm">
                 Keep up on Intagram!
               </Button>
+              </Link>
+
             </div>
           </div>
           <img
