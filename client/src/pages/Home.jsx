@@ -34,7 +34,7 @@ export default function Home() {
             </p>
             <div className="flex gap-3 h-10">
               <Link to='https://gdsc.community.dev/tezpur-university-tezpur-india/'>
-              <Button class="bg-[#4285F4] hover:bg-blue-700 text-white  rounded">
+              <Button className="bg-[#4285F4] hover:bg-blue-700 text-white  rounded">
                 Learn More
               </Button>
               </Link>
