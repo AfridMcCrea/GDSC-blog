@@ -12,7 +12,8 @@ export default function PostPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
-  const [recentPosts, setRecentPosts] = useState(null);
+  const [recentPosts, setRecentPosts] = useState([]);
+  const [remainingPosts, setRemainingPosts] = useState([]);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -25,11 +26,9 @@ export default function PostPage() {
           setLoading(false);
           return;
         }
-        if (res.ok) {
-          setPost(data.posts[0]);
-          setError(false);
-          setLoading(false);
-        }
+        setPost(data.posts[0]);
+        setError(false);
+        setLoading(false);
       } catch (error) {
         setError(true);
         setLoading(false);
@@ -39,19 +38,28 @@ export default function PostPage() {
   }, [postSlug]);
 
   useEffect(() => {
-    try {
-      const fetchRecentPosts = async () => {
-        const res = await fetch(`/api/post/getposts?limit=3`);
+    const fetchRecentPosts = async () => {
+      try {
+        const res = await fetch(`/api/post/getposts?limit=10`); // Fetch more than needed
         const data = await res.json();
         if (res.ok) {
-          setRecentPosts(data.posts);
+          setRemainingPosts(data.posts);
+          getNewPosts(data.posts);
         }
-      };
-      fetchRecentPosts();
-    } catch (error) {
-      console.log(error.message);
-    }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchRecentPosts();
   }, []);
+
+  const getNewPosts = (allPosts = remainingPosts) => {
+    const numPostsToShow = 3;
+    const shuffledPosts = allPosts.sort(() => 0.5 - Math.random());
+    const newPosts = shuffledPosts.slice(0, numPostsToShow);
+    setRecentPosts(newPosts);
+    setRemainingPosts(allPosts.filter(post => !newPosts.includes(post)));
+  };
 
   if (loading) {
     return (
@@ -61,6 +69,7 @@ export default function PostPage() {
       </div>
     );
   }
+
   return (
     <main className="p-3 flex flex-col max-w-6xl mx-auto min-h-screen">
       <h1 className="mt-10 font-serif text-3xl p-3 mx-auto text-center max-w-2xl lg:text-4xl">
@@ -92,13 +101,22 @@ export default function PostPage() {
       <div className="max-w-4xl mx-auto w-full">
         <CallToAction />
       </div>
-      <CommentSection postId={post._id} />
+      <CommentSection postId={post && post._id} />
       <div className="flex flex-col justify-center items-center mb-5">
         <h1 className="text-xl mt-5">More Articles</h1>
         <div className="flex flex-wrap gap-5 mt-5 justify-center">
-          {recentPosts &&
-            recentPosts.map((post) => <PostCard key={post._id} post={post} />)}
+          {recentPosts
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+            .map((post) => (
+              <PostCard key={post._id} post={post} />
+            ))}
         </div>
+        <button
+          className="mt-5 p-2 bg-blue-500 text-white rounded"
+          onClick={() => getNewPosts()}
+        >
+          Show New Posts
+        </button>
       </div>
     </main>
   );

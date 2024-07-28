@@ -34,13 +34,13 @@ export default function Home() {
             <div className="flex gap-3 h-10">
               <Link to="https://gdsc.community.dev/tezpur-university-tezpur-india/">
                 <button className="bg-[#4285F4] hover:bg-blue-700 text-white  rounded-md  ">
-                  <span className="flex items-stretch px-4 py-2 text-sm">
+                  <span className="flex items-stretch px-4 py-2 text-sm ">
                     Learn More
                   </span>
                 </button>
               </Link>
               <Link to="https://www.instagram.com/gdsc_tezu/">
-                <button className="bg-white hover:text-white hover:bg-blue-700 text-[#4285F4] outline rounded-md ">
+                <button className="bg-white hover:text-white hover:bg-blue-700 text-[#4285F4] outline rounded-md dark:bg-gray-800 ">
                   <span className="flex items-stretch text-sm px-4 py-2">
                     Keep up on Intagram!
                   </span>
@@ -55,7 +55,6 @@ export default function Home() {
               alt=""
             />
           </div>
-
         </div>
         <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7">
           {posts && posts.length > 0 && (

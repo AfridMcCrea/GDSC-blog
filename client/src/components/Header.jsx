@@ -32,10 +32,10 @@ export default function Header() {
       <div className="flex m-2">
         <img src={logo} alt="Logo" className="sm:h-3.5  mt-1 h-2.5" />
         <div className="flex flex-col">
-          <span className="text-gray-600 ml-1 sm:text-[14px] text-[11px]">
+          <span className="text-gray-600 ml-1 sm:text-[14px] text-[11px] dark:text-gray-300">
             Google Developer Students Clubs
           </span>
-          <span className="text-gray-500 ml-1 sm:text-[11px] text-[9px] ">
+          <span className="text-gray-500 ml-1 sm:text-[11px] text-[9px] dark:text-gray-400">
             Tezpur University
           </span>
         </div>
