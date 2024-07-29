@@ -92,9 +92,9 @@ export default function CreatePage() {
           ></TextInput>
           <Select onChange={(e)=> setFormData({...formData , category : e.target.value})}>
             <option value="uncategorized">Select a category</option>
-            <option value="javascript">Javascript</option>
-            <option value="reactjs">React.js</option>
-            <option value="nextjs">Next.js</option>
+            <option value="Science&Technology">Science & Technology</option>
+            <option value="AI/ML">AI & ML</option>
+            <option value="Healtcare">HealthCare</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teel-500 border-dotted p-3">
