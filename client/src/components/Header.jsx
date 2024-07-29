@@ -29,7 +29,7 @@ export default function Header() {
   };
   return (
     <Navbar className="border-b-2">
-      <div className="flex m-2">
+      <div className="flex m-1 lg:m-2">
         <img src={logo} alt="Logo" className="sm:h-3.5  mt-1 h-2.5" />
         <div className="flex flex-col">
           <span className="text-gray-600 ml-1 sm:text-[14px] text-[11px] dark:text-gray-300">
@@ -56,7 +56,7 @@ export default function Header() {
           pill
           onClick={() => dispatch(toogleTheme())}
         >
-        { currentUser && (<div className="">{theme == "light" ? <FaSun /> : <FaMoon />}</div>)}  
+          <div className="">{theme == "light" ? <FaMoon /> : <FaSun />}</div>
         </Button>
         {currentUser ? (
           <Dropdown
@@ -80,7 +80,7 @@ export default function Header() {
           </Dropdown>
         ) : (
           <Link to="/sign-in">
-            <Button gradientDuoTone="purpleToBlue" outline >
+            <Button gradientDuoTone="purpleToBlue" outline>
               Sign In
             </Button>
           </Link>
